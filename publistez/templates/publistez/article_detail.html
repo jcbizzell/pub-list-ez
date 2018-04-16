@@ -1,0 +1,24 @@
+{% extends 'publistez/base.html' %}
+
+{% block content %}
+    <div class="article">
+        {% if article.added_date %}
+            <div class="date">
+                Added to Database: {{ article.added_date }}
+            </div>
+        {% endif %}
+        <a class="btn btn-default" href="{% url 'article_edit' pk=article.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <h1>{{ article.title }}</h1>
+        <p><ul>
+            <li><b>Authors:</b> {{ article.author_str }}</li>
+            <li><b>Year:</b> {{ article.year }}</li>
+            <li><b>Journal:</b> {{ article.journal }}</li>
+            <li><b>Published Date:</b> {{ article.publish_date|date:'Y-F-d' }}</li>
+            <li><b>More:</b> {{ article.other_str }}</li>
+            <li><b>DOI:</b> {{ article.doi }}</li>
+            <li><b>Pubmed ID:</b> {{ article.pubmed }}</li>
+            <li><b>Cited by:</b> {{ article.citedby }}</li>
+            <li><b>Keywords:</b> {{ article.keyword_str }}</li>
+        </ul></p>
+    </div>
+{% endblock %}
