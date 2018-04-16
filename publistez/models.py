@@ -20,7 +20,7 @@ class Article(models.Model):
     #        blank=True, null=True)
 
     def save_to_db(self):
-        self.publish_date = timezone.now()
+        self.added_date = timezone.now()
         self.save()
 
     def __str__(self):
@@ -43,7 +43,7 @@ class ArticleListItem(models.Model):
     add2db = models.BooleanField(default=True)
 
     def save_to_db(self):
-        self.publish_date = timezone.now()
+        self.added_date = timezone.now()
         self.save()
 
     def __str__(self):

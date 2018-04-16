@@ -7,7 +7,9 @@
                 Added to Database: {{ article.added_date }}
             </div>
         {% endif %}
-        <a class="btn btn-default" href="{% url 'article_edit' pk=article.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'article_edit' pk=article.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
         <h1>{{ article.title }}</h1>
         <p><ul>
             <li><b>Authors:</b> {{ article.author_str }}</li>

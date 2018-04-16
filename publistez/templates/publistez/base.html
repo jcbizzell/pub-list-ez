@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <html>
     <head>
-        <title>Belger Lab Publications</title>
+        <title>PubListEz</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
         <link href="//fonts.googleapis.com/css?family=Inika&subset=latin,latin-ext" rel="stylesheet" type="text/css">
@@ -31,7 +31,10 @@
     </head>
     <body>
         <div class="page-header">
-            <a href="{% url 'pubs_list' %}" class="top-menu"><span class="glyphicon glyphicon-list-alt" title="Show My Publications"></span></a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'pubs_list' %}" class="top-menu"><span class="glyphicon glyphicon-list-alt" title="Show My Publications"></span></a>
+                <a href="{% url 'article_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus" title="Manually Add Publication"></span></a>
+            {% endif %}
             <h1><a href="/">PubListEz</a></h1>
         </div>
         <div class="content container">
